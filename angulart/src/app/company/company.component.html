@@ -1,0 +1,150 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+     
+    body {
+      background-image: url("https://footage.framepool.com/shotimg/qf/225183066-3d-structure-texture-tall-big-large.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  
+</style> 
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg bg-dark nav-dark">
+    <ul class="navbar-nav ">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/import">Import Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/companylist">Manage Company</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/stockexchangelist">Manage Exchange</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/iposlist">Update IPO Details</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ">
+        <a class="nav-link text-white" routerLink="/home"><i class="fa fa-sign-out" style="font-size:24px"></i>logout</a>
+      </li>
+    </ul>
+    
+
+  </nav>
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+    <div class="card card-login my-5">
+      <div class="card-body">
+        <h5 class="card-title text-center">Add Company</h5>
+     
+  <form [formGroup]="companydatasaveform" #saveCompanydata1 (ngSubmit)="saveCompanydata(saveCompanydata)">
+   <div class="form-group">
+    <label for="name">CompanyName</label>
+    <input type="text" class="form-control" autofocus formControlName="companyName" placeholder="enter company name" data-toggle="tooltip"
+     data-placement="right" title="Enter CompanyName " required="required">
+    <div class="alert alert-danger" *ngIf = "(CompanyName.touched) && (CompanyName.invalid)"
+    style="margin-top: 5px;">
+     <span *ngIf="CompanyName.errors.required">CompanyName is Required</span>
+     
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="name">BoardofDirectors</label>
+        <input type="text" class="form-control" autofocus formControlName="boardofDirectors" placeholder="enter directors" data-toggle="tooltip"
+         data-placement="right" title="Enter BoardofDirectors " required="required">
+        <div class="alert alert-danger" *ngIf = "(BoardofDirectors.touched) && (BoardofDirectors.invalid)"
+        style="margin-top: 5px;">
+         <span *ngIf="BoardofDirectors.errors.required">Directors Required</span>
+         
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="name">BriefWriteup</label>
+            <input type="text" class="form-control" autofocus formControlName="briefWriteup" placeholder="writeup" data-toggle="tooltip"
+             data-placement="right" title="BriefWriteup " required="required">
+            <div class="alert alert-danger" *ngIf = "(BriefWriteup.touched) && (BriefWriteup.invalid)"
+            style="margin-top: 5px;">
+             <span *ngIf="BriefWriteup.errors.required"> Required</span>
+             
+            </div>
+            </div>
+    
+   <div class="form-group">
+    <label for="name">ListInStock</label>
+    <input type="text" class="form-control" formControlName="listInStock" data-toggle="tooltip"
+     placeholder="confirm password" data-placement="right" title="enterpassword" required="required" >
+    <div class="alert alert-danger" *ngIf = "(ListInStock.touched) && (ListInStock.invalid)"
+    style="margin-top: 5px;">
+     <span *ngIf="ListInStock.errors.required"> Required</span>
+     
+    </div>
+   </div>
+   <div class="form-group">
+    <label for="stockcode">StockCode</label>
+    <select class="form-control" formControlName="stockCode" data-toggle="tooltip"
+      data-placement="right" title="Select StockCode" required="required">
+     <option value="null">--Select Type--</option>
+     <option value="Nse">Nse</option>
+     <option value="Bse">Bse</option>
+    </select>
+   </div>
+   <div class="form-group">
+    <label for="turnover">TurnOver</label>
+    <input type="text" class="form-control" formControlName="turnOver" placeholder="Turnover"
+    data-toggle="tooltip" data-placement="right" title="Enter turnOver" required="required">
+    <div class="alert alert-danger" *ngIf = "(TurnOver.touched) && (TurnOver.invalid)"
+    style="margin-top: 5px;">
+     <span *ngIf="TurnOver.errors.required">Ceo is Required</span>
+     
+    </div>
+   </div>
+    
+    <div class="form-group">
+      <label for="name">Ceo</label>
+      <input type="text" class="form-control" formControlName="ceo" placeholder="ceo"
+      data-toggle="tooltip" data-placement="right" title="Enter ceoname" required="required">
+      <div class="alert alert-danger" *ngIf = "(Ceo.touched) && (Ceo.invalid)"
+      style="margin-top: 5px;">
+       <span *ngIf="Ceo.errors.required">Ceo is Required</span>
+       
+      </div>
+     </div>
+     <div class="form-group">
+      <label for="branch">Sector</label>
+      <select class="form-control" formControlName="sector" data-toggle="tooltip"
+        data-placement="right" title="Select Sector" required="required">
+       <option value="null">--Select Type--</option>
+       <option value="Public">Public</option>
+       <option value="Private">Private</option>
+      </select>
+     </div>
+    
+    
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+   </form>
+   
+  </div>
+  </div>
+  </div>
+ </div>
+ <div [hidden]="!submitted">
+ <button (click)="companydatasaveform()"></button>
+
+ </div>
+ </body>
+ </html>
+ 
+ 
+
+

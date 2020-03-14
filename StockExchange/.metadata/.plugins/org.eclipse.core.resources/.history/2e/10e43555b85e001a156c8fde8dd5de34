@@ -1,0 +1,5 @@
+package com.cts.companydata.dao;
+
+public class CompanyDataRepository {
+
+}

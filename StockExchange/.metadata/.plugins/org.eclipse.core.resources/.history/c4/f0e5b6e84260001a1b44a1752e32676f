@@ -1,0 +1,5 @@
+package com.cts.companydata;
+
+public interface JSONCompanyClient {
+
+}

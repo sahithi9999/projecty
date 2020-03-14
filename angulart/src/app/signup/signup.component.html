@@ -1,0 +1,140 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      background-image: url("https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background:lightgrey;
+  color:rgb(14,130,247);
+  min-width: 40px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 7px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-login my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Signup</h5>
+            
+              <form [formGroup]="usersaveform" #saveUser1 (ngSubmit)="saveUser(saveUser1)">
+                <div class="form-group">
+                  <label for="name">Id</label>
+                  <input type="text" class="form-control" autofocus formControlName="id" placeholder="enter id"
+                    data-toggle="tooltip" data-placement="right" title="Enter id " width="60px" required="required">
+                  <div class="alert alert-danger" *ngIf="(Id.touched) && (Id.invalid)" style="margin-top: 3px;">
+                    <span *ngIf="Id.errors.required">id is Required</span>
+                    <span *ngIf="Id.errors.minlength">
+                      MinLength Error
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  
+                  
+                  <input type="text" class="form-control" formControlName="userName" pattern="[a-zA-Z]+"
+                    placeholder="enter username" data-toggle="tooltip" data-placement="right" title="Enter User Name"
+                    required="required">
+                  
+                  <div class="alert alert-danger" *ngIf="(UserName.touched) && (UserName.invalid)"
+                    style="margin-top: 5px;">
+                    <span *ngIf="UserName.errors.required">User Name is Required</span>
+                    <span *ngIf="UserName.errors.minlength">
+                      MinLength Error
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name">Password</label>
+                  <input type="password" class="form-control"  formControlName="password" placeholder="enter password"
+                    data-toggle="tooltip" data-placement="right" title="enterpassword" required="required">
+                  <div class="alert alert-danger" *ngIf="(Password.touched) && (Password.invalid)"
+                    style="margin-top: 5px;">
+                    <span *ngIf="Password.errors.required">password is Required</span>
+                    <span *ngIf="Password.errors.minlength">
+                      MinLength Error
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="name">Email</label>
+                  <input type="text" class="form-control" formControlName="email" placeholder="example@gmail.com"
+                    data-toggle="tooltip" data-placement="right" title="Enter Email" required="required">
+                  <div class="alert alert-danger" *ngIf="(Email.touched) && (Email.invalid)" style="margin-top: 5px;">
+                    <span *ngIf="Email.errors.required">Email is Required</span>
+                    <span *ngIf="Email.errors.email">
+                      Invalid Email Format
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name">MobileNumber</label>
+                  <input type="number" class="form-control" formControlName="mobileNumber"
+                    placeholder="enter your mobile number" data-toggle="tooltip" data-placement="right"
+                    title="Enter MobileNumber" required size="11" required="required">
+                  <div class="alert alert-danger" *ngIf="(MobileNumber.touched) && (MobileNumber.invalid)"
+                    style="margin-top: 5px;">
+                    <span *ngIf="MobileNumber.errors.required">number is Required</span>
+                    <span *ngIf="MobileNumber.errors.email">
+                      Invalid mobilenumber
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group">  
+                  <div class=" col-md-offset-1 col-md-4">  
+                        
+                    <label for="profileImage">Upload profile Image</label>  
+                      <input formControlName="profileImage" class="form-control" type="file" (change)="selectFile($event)">   
+                  </div>  
+                </div>  
+               
+                <button type="submit" class="btn btn-success" [disabled]=!usersaveform.valid>Signup</button>
+                <div class="text-center">Already have an account? <a href="login">Login here</a></div>
+              </form>
+            
+          </div>
+        </div>
+
+        <div [hidden]="!submitted">
+          <button (click)="usersaveform()"></button>
+          <h4>User Added SuccessFully!</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

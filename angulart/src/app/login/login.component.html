@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      background-image: url("https://images.pexels.com/photos/461077/pexels-photo-461077.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+      background-repeat: no-repeat;
+      background-size:cover;
+      
+    }
+    card-login{
+      background-color: black;
+    }
+    body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background:black;
+  color:white;
+  min-width: 40px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 7px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+   
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+        <div class="card card-login my-5">
+          <div class="card-body">
+            <br>
+            <h5 class="card-title text-center">Login</h5>
+            
+            <br>
+
+
+              <form [formGroup]="usersaveform" #saveUser1 (ngSubmit)="saveUser(saveUser1)" class="form-container">
+
+
+
+                <div class="form-group">
+                  <label>Username</label>
+                  <br>
+                  
+                  <div class="input-container">
+                    
+                    <i class="fa fa-user icon"></i>
+
+                    <input type="text" class="form-control" class="input-field" formControlName="userName" placeholder="username"
+                      data-toggle="tooltip" data-placement="right" title="Enter User Name">
+                    </div>
+                    <div class="alert alert-danger"
+                      *ngIf="(usersaveform.get('userName').touched) && (usersaveform.get('userName').invalid)"
+                      style="margin-top: 5px;">
+
+                      <span *ngIf="usersaveform.get('userName').errors.required">username is required</span>
+
+                      <span *ngIf="usersaveform.get('userName').errors.minlength">
+
+                        MinLength Error
+                      </span>
+                      <br>
+                    </div>
+                  </div>
+               
+
+
+                 <div class="form-group">
+                  <label>Password</label>
+                  <br>
+                  
+                  <div class="input-container">
+                   
+                    <i class="fa fa-key icon"></i>
+
+                  <input type="password" class="form-control" class="input-field" formControlName="password" data-toggle="tooltip"
+                    data-placement="right" title="Enter Password" placeholder="password">
+                  </div>
+                  <div class="alert alert-danger"
+                    *ngIf="(usersaveform.get('password').touched) && (usersaveform.get('password').invalid)"
+                    style="margin-top: 5px;">
+
+                    <span *ngIf="usersaveform.get('password').errors.required">password is required</span>
+
+                    <span *ngIf="usersaveform.get('password').errors.minlength">
+
+                      MinLength Error
+
+                    </span>
+
+                  </div>
+
+                </div>
+               
+                 <br>
+                 <div class="text-center">
+                <button type="submit" class="btn btn-success" [disabled]=!usersaveform.valid>Submit</button>
+              </div>
+
+                
+
+                  <span class="float-right font-weight-bold">
+
+                    New User?
+
+                    <a routerLink="/signup">
+
+                      Signup </a>
+
+
+
+                  </span>
+
+                
+
+              </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <br><br><br>
+
+</body>
+
+</html>

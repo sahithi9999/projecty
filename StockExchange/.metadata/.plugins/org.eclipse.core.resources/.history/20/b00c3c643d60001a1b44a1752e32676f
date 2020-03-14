@@ -1,0 +1,72 @@
+package com.cts.companydata.controller;
+
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.cts.companydata.pojo.CompanyData;
+import com.cts.companydata.JSONCompanyClient;
+import com.cts.companydata.dao.CompanyDataRepository;
+
+
+@RestController
+@CrossOrigin(origins="*",allowedHeaders = "*")  
+@RequestMapping("/companydata")  
+
+public class CompanyDataController {
+	@Autowired
+	private CompanyDataRepository companydataRepository;
+	@Autowired
+	JSONCompanyClient jcompany;
+	@GetMapping("/getAllCompanydata")
+	public Iterable<CompanyData> getAllCompanydata()
+	{
+		return companydataRepository.findAll();
+	}
+	@PostMapping("/saveCompanydata")
+	public CompanyData saveCompanydata(@RequestBody CompanyData companydata)
+	{
+		System.out.println(companydata);
+	companydataRepository.save(companydata);
+		return companydata;
+	}
+	@PutMapping("/updateCompanydata/{id}")
+	public CompanyData updateCompanydata(@RequestBody CompanyData companydata,@PathVariable("id") Integer id)
+	{
+		companydata.setId(id);
+		System.out.println(companydata);
+		companydataRepository.save(companydata);
+		
+		return companydata;
+	}
+	@DeleteMapping("/deleteCompanydata/{id}")
+	 public Boolean deleteCompanydata( @PathVariable("id") Integer id)
+{
+		//System.out.println(companyName);
+	 companydataRepository.findById(id);
+return true;
+	 }
+	@GetMapping("/findOneInAll1/{id}")
+
+	 public CompanyData findOneInAll1(@PathVariable("id") Integer id) {
+java.util.Optional <CompanyData> companydata = companydataRepository.findId(id);
+
+	 CompanyData comp=companydata.get();
+
+	 comp.setStockPriceList(jcompany.findById(id));
+
+	 return companydata.get();
+
+	 }
+
+}

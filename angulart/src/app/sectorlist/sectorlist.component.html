@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg bg-dark nav-dark">
+  <ul class="navbar-nav ">
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="/import">Import Data</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="/companylist">Manage Company</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="/stockexchangelist">Manage Exchange</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="/iposlist">Update IPO Details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="/userlist">User Details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" routerLink="/sectorlist">Sector Details</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item ">
+      <a class="nav-link text-white" routerLink="/home"><i class="fa fa-sign-out" style="font-size:24px"></i>logout</a>
+    </li>
+  </ul>
+  
+
+</nav>
+<style>
+  .bg {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTsZnSsZmysJbalF_hc7Krm-3OnV_MkV7qzTQnNk1x5dEXMzFAZ");
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+</style>
+<body>
+<div class="bg">
+<div class="panel panel-default">
+    <div class="panel-body">
+            <table class="table table-hover table-sm" >
+          
+              <thead class="thead-light">
+                <tr>
+                <th>Id</th>
+                  <th>BriefWriteup</th>
+                 <th>Sectorname</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let sectors of sectorlist ">
+                  <td>{{sectors.id}}</td>
+                  <td>{{sectors.brief}}</td>
+                  <td>{{sectors.sectorName}}</td>
+                  <td><button (click)="deleteSectors(sectors)" class="btn btn-danger">Delete</button> </td>
+                 <td><button (click)="updateSectors(sectors)" class="btn btn-primary">Update</button> </td>
+                 
+                 </tr>
+                    </tbody><br>
+            </table>
+            <div class="text-center"> 
+              <button type="button"class="btn btn-light"><a href="addsector">Add</a></button> 
+              <button type="button"class="btn btn-link"><a href="adminlanding">Back</a></button> 
+           
+             <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+          
+        </div>
+        </div>
+       </div>
+       </div>
+       </body>
+    

@@ -1,0 +1,16 @@
+package com.cts.companydata.dao;
+
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.cts.companydata.pojo.CompanyData;
+
+public interface CompanyDataRepository  extends CrudRepository <CompanyData,Integer>{
+	Iterable<CompanyData> findAll();
+
+	Optional<CompanyData> findByCompanyName(String companyName);
+
+	void deleteByCompanyName(String companyName);
+
+}

@@ -1,0 +1,15 @@
+package com.cts.dao;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.cts.stockprice.StockPrice;
+
+
+public interface StockPriceRepository  extends CrudRepository <StockPrice,Integer> {
+
+	Iterable<StockPrice> findAll();
+
+List<StockPrice> findByCompanyCode(Integer companyCode);
+}

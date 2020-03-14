@@ -1,0 +1,128 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  body{
+    background-image: url("https://media.istockphoto.com/photos/global-market-trends-picture-id891619848?k=6&m=891619848&s=612x612&w=0&h=TQFb0Muj9n7DTphOoJ6UWxwXnC5F4ps0oIcvWVF7z2w=");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-secondary nav-dark">
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/import">IMPORT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/companylist">ManageCompany</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/managecompanies">Update IPO Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/stockexchangelist">Manage Exchange</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/iposlist">Update IPO Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/userlist">User Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/sectorlist">Sector Details</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link text-white" routerLink="/home"><i class="fa fa-sign-out" style="font-size:24px"></i>logout</a>
+          </li>
+        </ul>
+        
+    
+      </nav>
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+    <div class="card card-login my-5">
+      <div class="card-body">
+        <h5 class="card-title text-center">Signup</h5>
+  <form [formGroup]="stockexchangesaveform" #saveStockexchange1 (ngSubmit)="saveStockexchange(saveStockexchange)">
+   <div class="form-group">
+    <label for="name">Id</label>
+    <input type="number" class="form-control" autofocus formControlName="id" placeholder="enter id" data-toggle="tooltip"
+     data-placement="right" title="Enter id " required="required">
+    <div class="alert alert-danger" *ngIf = "(Id.touched) && (Id.invalid)"
+    style="margin-top: 5px;">
+     <span *ngIf="Id.errors.required">Id is Required</span>
+     
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="name">Brief</label>
+        <input type="text" class="form-control" autofocus formControlName="brief" placeholder="enter brief" data-toggle="tooltip"
+         data-placement="right" title="Enter Brief " required="required">
+        <div class="alert alert-danger" *ngIf = "(Brief.touched) && (Brief.invalid)"
+        style="margin-top: 5px;">
+         <span *ngIf="Brief.errors.required"> Required</span>
+         
+        </div>
+        </div>
+        <div class="form-group">
+            <label for="name">ContactAdress</label>
+            <input type="text" class="form-control" autofocus formControlName="contactAdress" placeholder="address" data-toggle="tooltip"
+             data-placement="right" title="ContactAdress " required="required">
+            <div class="alert alert-danger" *ngIf = "(ContactAdress.touched) && (ContactAdress.invalid)"
+            style="margin-top: 5px;">
+             <span *ngIf="ContactAdress.errors.required"> Required</span>
+             
+            </div>
+            </div>
+    
+   <div class="form-group">
+    <label for="name">Remarks</label>
+    <input type="text" class="form-control" formControlName="remarks" data-toggle="tooltip"
+     placeholder="remarks" data-placement="right" title="remarks" required="required" >
+    <div class="alert alert-danger" *ngIf = "(Remarks.touched) && (Remarks.invalid)"
+    style="margin-top: 5px;">
+     <span *ngIf="Remarks.errors.required"> Required</span>
+     
+    </div>
+   </div>
+   
+   <div class="form-group">
+    <label for="turnover">StockExchange</label>
+    <input type="text" class="form-control" formControlName="stockExchange" placeholder="StockExchange"
+    data-toggle="tooltip" data-placement="right" title="Enter StockExchange" required="required">
+    <div class="alert alert-danger" *ngIf = "(StockExchange.touched) && (StockExchange.invalid)"
+    style="margin-top: 5px;">
+     <span *ngIf="StockExchange.errors.required">StockExchange is Required</span>
+     
+    </div>
+   </div>
+    
+   
+    
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+   </form>
+   </div>
+  </div>
+ </div>
+</div>
+ <div [hidden]="!submitted">
+ <button (click)="companydatasaveform()"></button>
+  <h4>Company Added SuccessFully!</h4>
+ </div>
+ </body>
+ </html>
+ 
+ 
+
+

@@ -1,0 +1,57 @@
+
+      <style>
+        .bg{
+          background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTd3a7QrSEmLl53Void6cN9qRAv3BrsPEFLBAnilDrCHS4wsGsp");
+          background-repeat: no-repeat;
+          background-size:cover;
+        }
+      </style> 
+      <body>
+  
+      <div class="bg">
+  <div class="panel panel-default">
+  <div class="panel-body">
+          <table class="table table-hover table-sm" >
+         <thead class="thead-light">
+          <tr>  
+          <th>Id</th>
+           <th>Date</th> 
+           <th>Time</th> 
+           <th>Remarks</th>
+           <th>Companyname</th> 
+           <th>PricePerShare</th>
+           <th>Stockexchange</th>
+           <th>TotalnoofShares</th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr *ngFor="let ipos of iposlist ">
+           <td>{{ipos.id}}</td>
+           <td>{{ipos.date}}</td>
+           <td>{{ipos.time}}</td>
+             <td>{{ipos.remarks}}</td>
+            <td>{{ipos.companyName}}</td>
+           <td>{{ipos.pricePershare}}</td>
+           <td>{{ipos.stockExchange}}</td>
+           <td>{{ipos.totalNoofShares}}</td>
+           <td><button (click)="deleteIpos(ipos)"class="btn btn-danger">Delete</button></td>
+           <td><button (click)="updateIpos(ipos)"class="btn btn-primary">Update</button></td> 
+           </tr>
+            </tbody><br>
+        </table>
+        <div class="text-center"> 
+          <button type="button"class="btn btn-light"><a routerLink="/addipo">Add</a></button> 
+          <button type="button"class="btn btn-link"><a routerLink="/userlanding">Back</a></button> 
+       
+         
+      <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    </div>
+    </div>
+    </div>
+    </div>
+    </body>
+  
+  
+  
+  
+  
